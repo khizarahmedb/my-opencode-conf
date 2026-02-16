@@ -1,0 +1,14 @@
+{
+  "name": "agent-harness",
+  "version": "1.0.0",
+  "description": "AI Agent Harness with HTTP API for n8n integration",
+  "main": "server.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun run server.ts",
+    "dev": "bun --watch run server.ts"
+  },
+  "dependencies": {
+    "ollama": "^0.1.0"
+  }
+}
