@@ -11,6 +11,9 @@ This config extends the base [agents-config](https://github.com/khizarahmedb/age
 - **MCP Server Integration**: Custom MCP servers for enhanced agent capabilities
   - [Remote MCP Server Guide](docs/mcp-remote-access-guide.md) - Run MCP server on one device, connect from another
   - [Working Example](examples/remote-mcp-server/) - Complete, ready-to-use remote MCP server
+- **Opencode Serve + n8n**: Use opencode as an AI backend for n8n workflows
+  - [Opencode Serve for n8n](docs/opencode-serve-n8n.md) - Full setup guide
+  - Uses your existing opencode authentication - no extra API keys needed!
 - **Obsidian-First Context**: Hybrid context retrieval with Obsidian integration
 - **Tool-Specific Configurations**: Optimized settings for different agent tools
 - **Custom Skills**: Repository-specific skill definitions

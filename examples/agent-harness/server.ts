@@ -30,11 +30,11 @@ const CONFIG = {
   HOST: process.env.HOST || "0.0.0.0",
   CONVERSATIONS_DIR: process.env.CONVERSATIONS_DIR || join(import.meta.dir, "conversations"),
   LOGS_DIR: process.env.LOGS_DIR || join(import.meta.dir, "logs"),
-  LLM_PROVIDER: process.env.LLM_PROVIDER || "ollama", // "ollama" or "openai"
+  LLM_PROVIDER: process.env.LLM_PROVIDER || "openai", // "openai" or "ollama"
   
-  // OpenAI config
+  // OpenAI config (use Codex subscription here)
   OPENAI_API_KEY: process.env.OPENAI_API_KEY || "",
-  OPENAI_MODEL: process.env.OPENAI_MODEL || "gpt-4",
+  OPENAI_MODEL: process.env.OPENAI_MODEL || "o1",
   OPENAI_BASE_URL: process.env.OPENAI_BASE_URL || "https://api.openai.com/v1",
   
   // Ollama config
