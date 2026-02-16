@@ -1,14 +1,28 @@
 # my-opencode-conf
 
-Standalone setup for using `opencode serve` as an HTTP inference endpoint in automation harnesses like `n8n`, `openclaw`, and custom request/response workers.
+Standalone repository for opencode configuration and HTTP serving setup.
 
 This repository is intentionally independent. It does not require `agents-config` and does not depend on Obsidian retrieval.
 
-## Primary Use Case
+## Two Ways to Use This Repo
 
-Use your existing `opencode` auth session, start a local HTTP server, then send requests from your harness.
+### Option 1: Direct Opencode Config (No Server)
 
-## Quick Start
+Just want the same agent profiles and settings? Apply the bundled config directly:
+
+```bash
+# Apply bundled configs to your local opencode
+bash scripts/apply-bundled-opencode-config.sh
+
+# Use opencode normally
+opencode
+```
+
+This updates your `~/.config/opencode/` with the same profiles and default agent settings from this repo.
+
+### Option 2: HTTP Server for Automation Harnesses
+
+Use `opencode serve` as an HTTP inference endpoint for `n8n`, `openclaw`, or custom request/response workers:
 
 1. Install and authenticate opencode (one-time):
    - `npm install -g opencode`
@@ -20,7 +34,7 @@ Use your existing `opencode` auth session, start a local HTTP server, then send 
 
 Detailed guide: `docs/opencode-serve-n8n.md`
 
-## Windows Quick Request
+## Windows Quick Request (Server Mode)
 
 ```cmd
 curl -X POST "http://10.10.8.84:3002/v1/chat/completions" -H "Content-Type: application/json" -d "{\"messages\":[{\"role\":\"user\",\"content\":\"Hello\"}]}"
@@ -39,22 +53,23 @@ curl -X POST "http://10.10.8.84:3002/v1/chat/completions" -H "Content-Type: appl
 
 ## Bundled Agent Profiles
 
-This repo now includes your current local opencode profiles under:
+This repo includes curated opencode agent profiles:
 
-- `configs/opencode/opencode.json`
-- `configs/opencode/agents/appscript-expert.md`
-- `configs/opencode/agents/coding-pro.md`
-- `configs/opencode/agents/nextjs-fullstack-db.md`
+- `configs/opencode/opencode.json` - default agent selection
+- `configs/opencode/agents/coding-pro.md` - general coding assistant
+- `configs/opencode/agents/appscript-expert.md` - Google Apps Script specialist
+- `configs/opencode/agents/nextjs-fullstack-db.md` - Next.js + database engineer
 
-Apply them to a machine with:
+Apply them:
 
 ```bash
 bash scripts/apply-bundled-opencode-config.sh
 ```
 
-This assumes the user has already authenticated via `opencode auth`.
+This copies configs to `~/.config/opencode/` (assumes you've already run `opencode auth`).
 
 ## Notes
 
-- This repo focuses on opencode HTTP serving and harness integration.
-- For production exposure, add your own auth/reverse proxy layer.
+- The bundled configs can be used directly with `opencode` CLI (no server needed)
+- The serve/MCP setup is optional for automation harness integration
+- For production HTTP exposure, add your own auth/reverse proxy layer
