@@ -30,6 +30,8 @@ curl -X POST "http://10.10.8.84:3002/v1/chat/completions" -H "Content-Type: appl
 
 - `docs/opencode-serve-n8n.md` - full setup + troubleshooting
 - `scripts/opencode-serve-n8n.sh` - start script for macOS/Linux
+- `examples/n8n/opencode-serve-proxy-workflow.json` - importable n8n workflow
+- `examples/n8n/README.md` - n8n import and usage steps
 - `setup_instructions.md` - standalone setup (macOS/Linux)
 - `setup_instructions_ubuntu.md` - standalone setup (Ubuntu)
 - `setup_instructions_win.md` - standalone setup (Windows)

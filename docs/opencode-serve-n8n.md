@@ -67,6 +67,12 @@ You'll get something like `10.10.8.84` - use this in n8n.
 
 ## Step 3: n8n Integration
 
+You can import a ready-made workflow from:
+
+- `examples/n8n/opencode-serve-proxy-workflow.json`
+
+Import guide: `examples/n8n/README.md`
+
 ### Option A: Webhook (Simplest)
 
 1. Create a new **Webhook** node in n8n
