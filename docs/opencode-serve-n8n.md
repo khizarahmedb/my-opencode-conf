@@ -26,6 +26,12 @@ n8n Workflow                                    Your Computer
 2. **opencode authenticated** - run `opencode auth` and log in (one time)
 3. **n8n** running (local or cloud)
 
+Optional: apply bundled local agent profiles from this repo:
+
+```bash
+bash scripts/apply-bundled-opencode-config.sh
+```
+
 ---
 
 ## Step 1: Start opencode serve

@@ -37,6 +37,23 @@ curl -X POST "http://10.10.8.84:3002/v1/chat/completions" -H "Content-Type: appl
 - `setup_instructions_win.md` - standalone setup (Windows)
 - `examples/` - optional local examples
 
+## Bundled Agent Profiles
+
+This repo now includes your current local opencode profiles under:
+
+- `configs/opencode/opencode.json`
+- `configs/opencode/agents/appscript-expert.md`
+- `configs/opencode/agents/coding-pro.md`
+- `configs/opencode/agents/nextjs-fullstack-db.md`
+
+Apply them to a machine with:
+
+```bash
+bash scripts/apply-bundled-opencode-config.sh
+```
+
+This assumes the user has already authenticated via `opencode auth`.
+
 ## Notes
 
 - This repo focuses on opencode HTTP serving and harness integration.
