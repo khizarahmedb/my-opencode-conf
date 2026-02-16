@@ -1,0 +1,157 @@
+# Global Agent Instructions (GitHub Workspace)
+
+## Scope
+These instructions apply to repositories under `/Users/khizar/Documents/GitHub`.
+
+## Standard
+- Canonical global instruction file: `/Users/khizar/Documents/GitHub/AGENTS.md`
+- Canonical global notes file: `/Users/khizar/Documents/GitHub/AGENT_NOTES_GLOBAL.md`
+- Canonical repo instruction file: `<repo_root>/AGENTS.md`
+- Canonical repo notes file: `<repo_root>/AGENT_NOTES.md`
+- Optional repo skills index: `<repo_root>/skills.md`
+- Canonical remote reference repo (read-only for consumers): `https://github.com/khizarahmedb/my-opencode-conf`
+
+## Instruction Precedence
+1. Explicit user request in the current conversation.
+2. Nearest `AGENTS.override.md` to the working directory, if present.
+3. Nearest `AGENTS.md` to the working directory.
+4. Parent-directory `AGENTS.override.md`/`AGENTS.md` files up to repo root.
+5. Global `AGENTS.override.md`/`AGENTS.md` in tool home (if supported).
+6. This workspace-global file as fallback guidance.
+
+If an agent/tool does not support `AGENTS.override.md`, use: explicit user request > repo-local `AGENTS.md` > global `AGENTS.md`.
+
+## Bootstrap Behavior
+1. Determine the repository root for the current task.
+2. If this is a newly created repository/directory under the workspace, create `<repo_root>/AGENTS.md` and `<repo_root>/AGENT_NOTES.md` before adding other project artifacts.
+3. If `<repo_root>/AGENTS.md` exists, follow it and treat this global file as fallback only.
+4. If `<repo_root>/AGENTS.md` does not exist, create:
+   - `<repo_root>/AGENTS.md`
+   - `<repo_root>/AGENT_NOTES.md`
+   - `<repo_root>/skills.md` (if repository-specific reusable workflows/skills are needed)
+5. Continue by following repo-local instructions.
+
+## Default Git Ignore Policy (All Repos)
+1. In every repository under this workspace, ensure `.gitignore` includes local agent files:
+   - `AGENT*.md`
+   - `.agentsmd`
+   - `/docs/` (when docs are intended to be local only)
+2. If agent markdown files were already tracked, untrack them without deleting local copies:
+   - `git ls-files -z -- 'AGENT*.md' '.agentsmd' | xargs -0 git rm --cached --ignore-unmatch`
+3. If `xargs` form is not available, untrack explicitly:
+   - `git rm --cached AGENTS.md AGENT_NOTES.md`
+4. Do not push these local agent files unless the user explicitly requests tracking them.
+5. Keep this untracking policy as default across all repositories unless the user explicitly changes this policy.
+
+## Daily Remote Reference Refresh (Read-Only)
+1. At the start of each conversation, capture local date as `YYYY-MM-DD`.
+2. Compare against `last_config_sync_date` in `/Users/khizar/Documents/GitHub/AGENT_NOTES_GLOBAL.md`.
+3. If date changed, pull latest from local clone of `/Users/khizar/Documents/GitHub/my-opencode-conf`:
+   - `git -C /Users/khizar/Documents/GitHub/my-opencode-conf pull --ff-only`
+4. Update `last_config_sync_date` in `/Users/khizar/Documents/GitHub/AGENT_NOTES_GLOBAL.md`.
+5. Treat `my-opencode-conf` as a read-only reference unless the owner explicitly asks for updates.
+
+## Automatic Global Config Maintenance
+1. At the start of each conversation, automatically review both:
+   - `/Users/khizar/Documents/GitHub/AGENTS.md`
+   - `/Users/khizar/Documents/GitHub/AGENT_NOTES_GLOBAL.md`
+2. If a new stable behavior/process preference appears, update both in the same turn:
+   - Add or refine durable policy text in `AGENTS.md`.
+   - Append a dated note in `AGENT_NOTES_GLOBAL.md` with rationale.
+3. Maintain and auto-update state keys in `AGENT_NOTES_GLOBAL.md`:
+   - `last_config_sync_date`
+   - `last_global_config_review_date`
+   - `last_global_config_review_repo`
+4. Update `last_global_config_review_date` and `last_global_config_review_repo` every conversation start.
+5. Keep updates concise and behavioral; never store secrets, passwords, API tokens, or personal data.
+6. During any conversation, if process drift/new stable preference is detected, update global config immediately in the same turn instead of waiting for conversation start.
+7. Mid-conversation global updates must modify both files together:
+   - Policy/instruction delta in `AGENTS.md`.
+   - Dated rationale note and refreshed review state in `AGENT_NOTES_GLOBAL.md`.
+
+## Local File Templates (When Missing)
+Create `<repo_root>/AGENTS.md` with:
+
+```md
+# Repo Agent Instructions
+
+1. At the start of every conversation in this repository, read `AGENT_NOTES.md` before proposing or writing changes.
+2. If `skills.md` exists, review it and use relevant skills/workflows for the task.
+3. Prefer retrieval-led reasoning over pre-training-led reasoning for framework/version-sensitive tasks.
+4. Explore project structure before retrieving external docs; then fetch only the minimum docs needed.
+5. Keep instructions compact; point to retrievable files rather than embedding full documentation in AGENTS.
+6. When a new stable preference appears, append it to `AGENT_NOTES.md` with a date and short rationale.
+7. Keep notes concise and behavioral; do not store secrets, passwords, API tokens, or personal data.
+8. If a note conflicts with an explicit user request in the current conversation, follow the explicit request and then update notes accordingly.
+9. When repo-level notes are insufficient, consult `/Users/khizar/Documents/GitHub/AGENT_NOTES_GLOBAL.md`.
+10. Do not copy global notes into local notes unless explicitly requested; reference them instead.
+```
+
+Create `<repo_root>/AGENT_NOTES.md` with:
+
+```md
+# Agent Notes
+
+- YYYY-MM-DD: <repo-specific preference>. Rationale: <why it should persist>.
+- Reference: Shared/global preferences live in `/Users/khizar/Documents/GitHub/AGENT_NOTES_GLOBAL.md`.
+```
+
+Optional `skills.md` starter:
+
+```md
+# Skills Index
+
+- <skill name>: <when to use>
+- <skill name>: <when to use>
+```
+
+## Compact Docs Index Pattern
+For framework-heavy repos, keep docs out of prompt context and provide a compact index in `AGENTS.md`.
+
+Recommended pattern:
+- Store retrievable docs under a folder like `.docs-index/` or framework-specific folder (for example `.next-docs/`).
+- Add a compact index section in `AGENTS.md` with paths, not full docs.
+- Include a hard rule such as: `Prefer retrieval-led reasoning over pre-training-led reasoning`.
+- Keep index compact (target around 8-12 KB when possible).
+
+## Cross-Tool Compatibility
+Use `AGENTS.md` as single source of truth, then expose it through each tool's global location:
+- Codex: `~/.codex/AGENTS.md`
+- Claude Code: `~/.claude/CLAUDE.md`
+- Gemini CLI: `~/.gemini/AGENTS.md` plus `~/.gemini/settings.json` with `context.fileName` including `AGENTS.md`
+- Copilot CLI: `~/.copilot/copilot-instructions.md` (or `AGENTS.md` via `COPILOT_CUSTOM_INSTRUCTIONS_DIRS`)
+- Cursor: `AGENTS.md` in repo root/subdirectories can coexist with `.cursor/rules`
+
+Bootstrap script:
+- Run `/Users/khizar/Documents/GitHub/setup-opencode-agent-standards.sh` to wire tool-specific global files to this canonical global `AGENTS.md`.
+
+## Global Notes Policy
+- Global user preferences belong in `/Users/khizar/Documents/GitHub/AGENT_NOTES_GLOBAL.md`.
+- Repo notes should contain only repository-specific behavior/preferences.
+- Prefer references to global notes over duplication.
+
+## Conversation Handoff
+1. When the user asks to preserve implementation context across conversations, persist a concise status/roadmap in the repository `README.md`.
+2. Mirror durable repo-specific behavior in `<repo_root>/AGENT_NOTES.md` and keep global-only behavior in `/Users/khizar/Documents/GitHub/AGENT_NOTES_GLOBAL.md`.
+3. Keep handoff notes short and actionable: current bottlenecks, prioritized next steps, and hard decisions already made.
+4. When work spans multiple branches in a repository, update each touched branch with an accurate branch-local `README.md` summary and refreshed `AGENTS.md` / `AGENT_NOTES.md` entries.
+
+## Opencode-Specific Additions
+
+### MCP Server Configuration
+- MCP configurations belong in `~/.config/opencode/mcp.json`
+- Default MCP servers: filesystem, obsidian (if available)
+- Validate JSON syntax before suggesting MCP changes
+- Document required environment variables in setup instructions
+
+### Obsidian Context Integration
+- Default to Obsidian-first hybrid mode for context retrieval
+- Use `obsidian_fast_context.sh` from base agents-config when available
+- Falls back to file glob/grep patterns when Obsidian CLI unavailable
+- Maintain fast startup: avoid blocking operations during initialization
+
+### Tool Priority
+When working with opencode agents:
+1. Prefer opencode's native MCP tools when available
+2. Fall back to standard bash/file operations when MCP unavailable
+3. Use `~/.config/opencode/settings.json` for tool-specific settings

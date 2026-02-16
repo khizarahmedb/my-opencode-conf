@@ -1,0 +1,11 @@
+# Agent Notes
+
+- YYYY-MM-DD: <repo-specific preference>. Rationale: <why it should persist>.
+- Reference: Shared/global preferences live in `/Users/khizar/Documents/GitHub/AGENT_NOTES_GLOBAL.md`.
+
+## Repository-Specific Notes
+
+<!-- Add repository-specific persistent notes here -->
+<!-- Example: -->
+<!-- - 2026-02-10: Prefer async/await over callbacks in this codebase. Rationale: consistent with existing patterns. -->
+<!-- - 2026-02-10: Database schema changes require migration files. Rationale: production data integrity. -->

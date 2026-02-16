@@ -1,0 +1,19 @@
+# Local agent notes/scratch files (keep local, do not track remotely)
+/docs/
+AGENT_NOTES*.md
+.agentsmd
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/

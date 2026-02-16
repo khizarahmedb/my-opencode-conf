@@ -1,0 +1,25 @@
+# Global Agent Notes
+
+## Auto-Maintenance State
+- `last_config_sync_date: YYYY-MM-DD`
+- `last_global_config_review_date: YYYY-MM-DD`
+- `last_global_config_review_repo: <repo_path>`
+- `last_global_config_review_trigger: <conversation_start|mid_conversation_update>`
+
+## Configuration Preferences
+
+- YYYY-MM-DD: User requested Obsidian-first hybrid mode for context retrieval. Rationale: improve context quality while maintaining fast startup times.
+- YYYY-MM-DD: User mandated strict git ignore policy for AGENT*.md and .agentsmd files. Rationale: keep local agent memory private and avoid leaking to remote repos.
+- YYYY-MM-DD: User established automatic start-of-conversation maintenance for global config files. Rationale: prevent config drift without manual reminders.
+- YYYY-MM-DD: User prefers mid-conversation global config updates when drift detected. Rationale: immediate policy codification reduces repeated corrections.
+
+## Opencode-Specific Preferences
+
+- YYYY-MM-DD: MCP server configuration established for filesystem and obsidian integration. Rationale: enhanced agent capabilities via Model Context Protocol.
+- YYYY-MM-DD: Cross-tool compatibility setup completed (Codex, Claude, Gemini). Rationale: single source of truth across all AI coding tools.
+
+## Reference
+
+- Base configuration: `/Users/khizar/Documents/GitHub/agents-config/`
+- Opencode configuration: `/Users/khizar/Documents/GitHub/my-opencode-conf/`
+- Repository configurations: `<repo_root>/AGENTS.md` and `<repo_root>/AGENT_NOTES.md`
