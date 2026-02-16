@@ -2,7 +2,6 @@
 
 Standalone repository for opencode configuration and HTTP serving setup.
 
-This repository is intentionally independent. It does not require `agents-config` and does not depend on Obsidian retrieval.
 
 ## Two Ways to Use This Repo
 
