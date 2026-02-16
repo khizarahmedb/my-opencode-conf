@@ -2,7 +2,6 @@
 
 Standalone setup for using `opencode serve` as an HTTP inference endpoint in automation harnesses like `n8n`, `openclaw`, and custom request/response workers.
 
-This repository is intentionally independent. It does not require `agents-config` and does not depend on Obsidian retrieval.
 
 ## Primary Use Case
 
