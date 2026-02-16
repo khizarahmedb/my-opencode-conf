@@ -1,5 +1,7 @@
 # Local agent notes/scratch files (keep local, do not track remotely)
-/docs/
+# Note: docs/ folder is allowed in this repository for documentation
+/docs/*.local.md
+/docs/.scratch/
 AGENT_NOTES*.md
 .agentsmd
 

@@ -1,0 +1,34 @@
+{
+  "_comment": "Example MCP configuration for opencode to connect to remote MCP server",
+  "mcpServers": {
+    "local-filesystem": {
+      "_comment": "Local filesystem access via stdio (standard local setup)",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/khizar"]
+    },
+    
+    "remote-server-basic": {
+      "_comment": "Remote MCP server without authentication (testing only)",
+      "url": "http://192.168.1.100:3000",
+      "transport": "http"
+    },
+    
+    "remote-server-secure": {
+      "_comment": "Remote MCP server with API key authentication (recommended)",
+      "url": "http://192.168.1.100:3000",
+      "transport": "http",
+      "headers": {
+        "Authorization": "Bearer your-secret-api-key-here"
+      }
+    },
+    
+    "remote-server-https": {
+      "_comment": "Remote MCP server with HTTPS and authentication (production)",
+      "url": "https://192.168.1.100:3443",
+      "transport": "http",
+      "headers": {
+        "Authorization": "Bearer your-secret-api-key-here"
+      }
+    }
+  }
+}

@@ -9,6 +9,8 @@ This repository contains specialized configuration for working with opencode age
 This config extends the base [agents-config](https://github.com/khizarahmedb/agents-config) repository with opencode-specific customizations:
 
 - **MCP Server Integration**: Custom MCP servers for enhanced agent capabilities
+  - [Remote MCP Server Guide](docs/mcp-remote-access-guide.md) - Run MCP server on one device, connect from another
+  - [Working Example](examples/remote-mcp-server/) - Complete, ready-to-use remote MCP server
 - **Obsidian-First Context**: Hybrid context retrieval with Obsidian integration
 - **Tool-Specific Configurations**: Optimized settings for different agent tools
 - **Custom Skills**: Repository-specific skill definitions
