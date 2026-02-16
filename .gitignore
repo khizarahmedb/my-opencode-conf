@@ -23,3 +23,10 @@ logs/
 # Node modules
 node_modules/
 examples/*/node_modules/
+
+# Build artifacts
+bun.lock
+examples/*/bun.lock
+
+# Runtime data
+examples/*/conversations/
