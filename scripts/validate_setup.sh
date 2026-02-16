@@ -81,13 +81,6 @@ else
     ((ERRORS++))
 fi
 
-# Check base agents-config repository
-if [ -d "$WORKSPACE_ROOT/agents-config" ]; then
-    echo "   ✅ agents-config repository exists"
-else
-    echo "   ⚠️  agents-config repository missing (base configuration)"
-fi
-
 # Sample repository checks
 echo ""
 echo "📋 Checking sample repositories..."
@@ -95,7 +88,7 @@ REPO_COUNT=0
 for repo in "$WORKSPACE_ROOT"/*/; do
     if [ -d "$repo/.git" ]; then
         REPO_NAME=$(basename "$repo")
-        if [ "$REPO_NAME" = "my-opencode-conf" ] || [ "$REPO_NAME" = "agents-config" ]; then
+        if [ "$REPO_NAME" = "my-opencode-conf" ]; then
             continue
         fi
         

@@ -25,11 +25,11 @@ if ([string]::IsNullOrEmpty($RelativeRepo)) {
 
 Write-Host "🔧 Setting up opencode agent configuration for: $RelativeRepo" -ForegroundColor Cyan
 
-# Source templates from my-opencode-conf
+# Source templates from my-opencode-conf only (standalone)
 $TemplateDir = Join-Path $WorkspaceRoot "my-opencode-conf\templates"
 if (-not (Test-Path $TemplateDir)) {
-    Write-Host "⚠️  my-opencode-conf templates not found, using base agents-config" -ForegroundColor Yellow
-    $TemplateDir = Join-Path $WorkspaceRoot "agents-config\templates"
+    Write-Host "❌ my-opencode-conf templates not found: $TemplateDir" -ForegroundColor Red
+    exit 1
 }
 
 # Create/update .gitignore

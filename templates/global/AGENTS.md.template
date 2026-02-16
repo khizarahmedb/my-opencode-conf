@@ -140,14 +140,13 @@ Bootstrap script:
 
 ### MCP Server Configuration
 - MCP configurations belong in `~/.config/opencode/mcp.json`
-- Default MCP servers: filesystem, obsidian (if available)
+- Default path in this repo is `opencode serve` HTTP usage for harness clients
 - Validate JSON syntax before suggesting MCP changes
 - Document required environment variables in setup instructions
 
-### Obsidian Context Integration
-- Default to Obsidian-first hybrid mode for context retrieval
-- Use `obsidian_fast_context.sh` from base agents-config when available
-- Falls back to file glob/grep patterns when Obsidian CLI unavailable
+### Harness Context Integration
+- Focus on request/response context passed by harness (for example n8n payload state)
+- Keep setup independent from external workspace config repositories
 - Maintain fast startup: avoid blocking operations during initialization
 
 ### Tool Priority

@@ -32,9 +32,9 @@ Use these for GitHub PR reviews:
 - Document required environment variables or paths in setup instructions
 
 ### Context Retrieval
-- Default to Obsidian-first hybrid mode for context retrieval
-- Use `obsidian_fast_context.sh` when available (from agents-config)
-- Fall back to file glob/grep patterns when Obsidian unavailable
+- Keep this repository focused on `opencode serve` and HTTP harness integration
+- Do not introduce Obsidian-specific retrieval requirements in this repo
+- Do not couple setup instructions to `agents-config`; this repo is standalone
 - Maintain fast startup: avoid blocking operations during initialization
 
 ### Tool Compatibility

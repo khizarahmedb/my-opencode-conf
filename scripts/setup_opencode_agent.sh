@@ -42,11 +42,11 @@ RELATIVE_REPO=$(realpath --relative-to="$WORKSPACE_ROOT" "$REPO_ROOT" 2>/dev/nul
 
 echo "🔧 Setting up opencode agent configuration for: $RELATIVE_REPO"
 
-# Source templates from my-opencode-conf
+# Source templates from my-opencode-conf only (standalone)
 TEMPLATE_DIR="$WORKSPACE_ROOT/my-opencode-conf/templates"
 if [ ! -d "$TEMPLATE_DIR" ]; then
-    echo "⚠️  my-opencode-conf templates not found, using base agents-config"
-    TEMPLATE_DIR="$WORKSPACE_ROOT/agents-config/templates"
+    echo "❌ my-opencode-conf templates not found at: $TEMPLATE_DIR"
+    exit 1
 fi
 
 # Create/update .gitignore

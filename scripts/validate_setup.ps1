@@ -87,14 +87,6 @@ if (Test-Path $OpenConfRepo) {
     $Errors++
 }
 
-# Check base agents-config repository
-$BaseConfigRepo = Join-Path $WorkspaceRoot "agents-config"
-if (Test-Path $BaseConfigRepo) {
-    Write-Host "   ✅ agents-config repository exists" -ForegroundColor Green
-} else {
-    Write-Host "   ⚠️  agents-config repository missing (base configuration)" -ForegroundColor Yellow
-}
-
 # Sample repository checks
 Write-Host ""
 Write-Host "📋 Checking sample repositories..." -ForegroundColor Yellow
@@ -104,7 +96,7 @@ foreach ($Repo in $Repos) {
     $GitDir = Join-Path $Repo.FullName ".git"
     if (Test-Path $GitDir) {
         $RepoName = $Repo.Name
-        if ($RepoName -eq "my-opencode-conf" -or $RepoName -eq "agents-config") {
+        if ($RepoName -eq "my-opencode-conf") {
             continue
         }
         

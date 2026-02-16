@@ -8,7 +8,7 @@ This repository includes reusable workflows and skills for opencode agent config
 **When to use**: Initial setup of opencode agent environment on a new machine or fresh install.
 **What it does**: 
 - Installs global AGENTS.md and AGENT_NOTES_GLOBAL.md
-- Configures MCP servers (Obsidian, filesystem, etc.)
+- Configures opencode serving and MCP endpoints for harness use
 - Sets up cross-tool compatibility (symlinks for Codex, Claude, Gemini)
 - Validates configuration completeness
 
@@ -32,7 +32,6 @@ This repository includes reusable workflows and skills for opencode agent config
 **When to use**: Daily maintenance or when updating from canonical repositories.
 **What it does**:
 - Pulls latest from my-opencode-conf (this repo)
-- Pulls latest from agents-config (base config)
 - Updates `last_config_sync_date` in global notes
 - Applies any new templates or scripts
 
